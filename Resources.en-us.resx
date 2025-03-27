@@ -1,0 +1,134 @@
+﻿<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="File" xml:space="preserve">
+        <value>File</value>
+    </data>
+    <data name="Title" xml:space="preserve">
+        <value>Khazan_DataEditor</value>
+    </data>
+    <data name="Open" xml:space="preserve">
+        <value>Open</value>
+    </data>
+    <data name="Save" xml:space="preserve">
+        <value>Save</value>
+    </data>
+    <data name="ImportDesc" xml:space="preserve">
+        <value>Import Description</value>
+    </data>
+    <data name="ExportDescription" xml:space="preserve">
+        <value>Export Description</value>
+    </data>
+    <data name="Create_Pak" xml:space="preserve">
+        <value>Create Pak</value>
+    </data>
+    <data name="Extract_Pak" xml:space="preserve">
+        <value>Extract Pak</value>
+    </data>
+    <data name="Quit" xml:space="preserve">
+        <value>Quit</value>
+    </data>
+    <data name="Config" xml:space="preserve">
+        <value>Config</value>
+    </data>
+    <data name="AutoSave" xml:space="preserve">
+        <value>AutoSave</value>
+    </data>
+    <data name="DisplayOld" xml:space="preserve">
+        <value>Display Original Data</value>
+    </data>
+    <data name="Donate" xml:space="preserve">
+        <value>Donate</value>
+    </data>
+    <data name="GlobalSearch" xml:space="preserve">
+        <value>Global Search</value>
+    </data>
+    <data name="Regex" xml:space="preserve">
+        <value>Regex</value>
+    </data>
+    <data name="Wildcard" xml:space="preserve">
+        <value>Wildcard</value>
+    </data>
+    <data name="ExactMatch" xml:space="preserve">
+        <value>ExactMatch</value>
+    </data>
+    <data name="Contains" xml:space="preserve">
+        <value>Contains(Include Field)</value>
+    </data>
+    <data name="Contains_Ori" xml:space="preserve">
+        <value>Contains(Only TIDX)</value>
+    </data>
+    <data name="SearchResult" xml:space="preserve">
+        <value>SearchResult</value>
+    </data>
+    <data name="FileSearch" xml:space="preserve">
+        <value>File Search</value>
+    </data>
+    <data name="ItemSearch" xml:space="preserve">
+        <value>TIDX or Desc Search</value>
+    </data>
+    <data name="DataContent" xml:space="preserve">
+        <value>Data Content</value>
+    </data>
+    <data name="SelectImportDesc" xml:space="preserve">
+        <value>Please Select Import Description Folder</value>
+    </data>
+    <data name="DragFolder" xml:space="preserve">
+        <value>Drag a Folder</value>
+    </data>
+    <data name="SaveDescSuss" xml:space="preserve">
+        <value>Save Description Success</value>
+    </data>
+    <data name="Confirm" xml:space="preserve">
+        <value>Confirm</value>
+    </data>
+    <data name="SelectDataFolder" xml:space="preserve">
+        <value>Please select a data folder</value>
+    </data>
+    <data name="Description" xml:space="preserve">
+        <value>Description</value>
+    </data>
+    <data name="Top" xml:space="preserve">
+        <value>Top</value>
+    </data>
+    <data name="OpenFolder" xml:space="preserve">
+        <value>Show in explore</value>
+    </data>
+    <data name="CancelTop" xml:space="preserve">
+        <value>Cancel Top</value>
+    </data>
+    <data name="TopHere" xml:space="preserve">
+        <value>Select a item right click to top here</value>
+    </data>
+    <data name="FirstSave" xml:space="preserve">
+        <value>First Save, Please select you mod folder to save modify data</value>
+    </data>
+    <data name="DefaultSaveFolder" xml:space="preserve">
+        <value>Do you set this folder to default path</value>
+    </data>
+    <data name="Clone" xml:space="preserve">
+        <value>Clone</value>
+    </data>
+    <data name="Delete" xml:space="preserve">
+        <value>Delete</value>
+    </data>
+    <data name="OriginData" xml:space="preserve">
+        <value>Origin Data</value>
+    </data>
+    <data name="NewItem" xml:space="preserve">
+        <value>Add New Item</value>
+    </data>
+    <data name="AddNewDataItem" xml:space="preserve">
+        <value>Add New Item</value>
+    </data>
+</root>
