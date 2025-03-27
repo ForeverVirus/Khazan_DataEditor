@@ -25,7 +25,7 @@ for %%A in ("%~1") do (
 
 set pak_file_name="%folder_name%.pak"
 
-%repak_exe% --aes-key 0xA896068444F496956900542A215367688B49B19C2537FCD2743D8585BA1EB128  unpack  "%~1"
+%repak_exe% --aes-key 0x94464E8E5DD6B5537C09E0E12B20A12C83949F646E4EF1A224B5892ED44AD1D9  unpack  "%~1"
 exit /b
 
 

@@ -1,31 +1,48 @@
-using Newtonsoft.Json.Linq;
+using UAssetAPI;
+using UAssetAPI.ExportTypes;
+using UAssetAPI.PropertyTypes.Objects;
 
 namespace KhazanData
 {
-public class ShopBuyItemPriceData : KhazanDataBase
+public class shopbuyitempricedata : KhazanDataBase
 {
     public int TIDX { get; set; }
+public PropertyData TIDX_Property { get; set; }
     public EItemType Type { get; set; }
+public PropertyData Type_Property { get; set; }
     public EItemSubType SubType { get; set; }
+public PropertyData SubType_Property { get; set; }
     public EItemGrade Grade { get; set; }
+public PropertyData Grade_Property { get; set; }
     public string Class { get; set; }
+public PropertyData Class_Property { get; set; }
     public string SubClass { get; set; }
+public PropertyData SubClass_Property { get; set; }
     public int EquipmentTIDX { get; set; }
+public PropertyData EquipmentTIDX_Property { get; set; }
     public int ConsumeTIDX { get; set; }
+public PropertyData ConsumeTIDX_Property { get; set; }
     public int PriceGold { get; set; }
+public PropertyData PriceGold_Property { get; set; }
     public int PriceLacrima { get; set; }
+public PropertyData PriceLacrima_Property { get; set; }
 }
 
-public class ShopBuyItemPriceDataTbl : KhazanTableBase
+public class shopbuyitempricedatatbl : KhazanTableBase
 {
-    public List<ShopBuyItemPriceData> Table { get; set; }
-    public void Initialize(JArray array)
+    public List<shopbuyitempricedata> Table
     {
-        Table = new List<ShopBuyItemPriceData>();
-        var dataArray = array.ToObject<ShopBuyItemPriceData[]>();
-        Table.AddRange(dataArray);
+        get { return _table;}
+        set { _table = value; }
     }
-
+    private List<shopbuyitempricedata> _table;
+    public override void Initialize(UAsset uasset)
+    {
+        _table = new List<shopbuyitempricedata>();
+        var dataExp = uasset.Exports[0] as DataTableExport;
+        var table = dataExp?.Table;
+        ProcessUAssetTable(table.Data, ref _table);
+    }
     public override List<KhazanDataBase> GetTable()
     {
         return new List<KhazanDataBase>(Table);

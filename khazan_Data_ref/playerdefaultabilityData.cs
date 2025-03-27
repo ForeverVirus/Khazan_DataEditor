@@ -1,25 +1,36 @@
-using Newtonsoft.Json.Linq;
+using UAssetAPI;
+using UAssetAPI.ExportTypes;
+using UAssetAPI.PropertyTypes.Objects;
 
 namespace KhazanData
 {
-public class playerdefaultabilityData : KhazanDataBase
+public class playerdefaultabilitydata : KhazanDataBase
 {
     public int TIDX { get; set; }
+public PropertyData TIDX_Property { get; set; }
     public EGrBaseStatus DefaultStat { get; set; }
+public PropertyData DefaultStat_Property { get; set; }
     public int Level { get; set; }
+public PropertyData Level_Property { get; set; }
     public Status Status { get; set; }
+public PropertyData Status_Property { get; set; }
 }
 
-public class playerdefaultabilityDataTbl : KhazanTableBase
+public class playerdefaultabilitydatatbl : KhazanTableBase
 {
-    public List<playerdefaultabilityData> Table { get; set; }
-    public void Initialize(JArray array)
+    public List<playerdefaultabilitydata> Table
     {
-        Table = new List<playerdefaultabilityData>();
-        var dataArray = array.ToObject<playerdefaultabilityData[]>();
-        Table.AddRange(dataArray);
+        get { return _table;}
+        set { _table = value; }
     }
-
+    private List<playerdefaultabilitydata> _table;
+    public override void Initialize(UAsset uasset)
+    {
+        _table = new List<playerdefaultabilitydata>();
+        var dataExp = uasset.Exports[0] as DataTableExport;
+        var table = dataExp?.Table;
+        ProcessUAssetTable(table.Data, ref _table);
+    }
     public override List<KhazanDataBase> GetTable()
     {
         return new List<KhazanDataBase>(Table);

@@ -1,26 +1,38 @@
-using Newtonsoft.Json.Linq;
+using UAssetAPI;
+using UAssetAPI.ExportTypes;
+using UAssetAPI.PropertyTypes.Objects;
 
 namespace KhazanData
 {
-public class BalanceObjectLevelData : KhazanDataBase
+public class balanceobjectleveldata : KhazanDataBase
 {
     public int TIDX { get; set; }
+public PropertyData TIDX_Property { get; set; }
     public int MissionTidx { get; set; }
+public PropertyData MissionTidx_Property { get; set; }
     public int UniqueIndex { get; set; }
+public PropertyData UniqueIndex_Property { get; set; }
     public int[] ContentsLevel_Playround { get; set; }
+public PropertyData ContentsLevel_Playround_Property { get; set; }
     public string Description { get; set; }
+public PropertyData Description_Property { get; set; }
 }
 
-public class BalanceObjectLevelDataTbl : KhazanTableBase
+public class balanceobjectleveldatatbl : KhazanTableBase
 {
-    public List<BalanceObjectLevelData> Table { get; set; }
-    public void Initialize(JArray array)
+    public List<balanceobjectleveldata> Table
     {
-        Table = new List<BalanceObjectLevelData>();
-        var dataArray = array.ToObject<BalanceObjectLevelData[]>();
-        Table.AddRange(dataArray);
+        get { return _table;}
+        set { _table = value; }
     }
-
+    private List<balanceobjectleveldata> _table;
+    public override void Initialize(UAsset uasset)
+    {
+        _table = new List<balanceobjectleveldata>();
+        var dataExp = uasset.Exports[0] as DataTableExport;
+        var table = dataExp?.Table;
+        ProcessUAssetTable(table.Data, ref _table);
+    }
     public override List<KhazanDataBase> GetTable()
     {
         return new List<KhazanDataBase>(Table);

@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using Khazan_DataEditor.DataControllers;
 using KhazanData;
+using UAssetAPI.PropertyTypes.Objects;
 
 namespace Khazan_DataEditor.src
 {
@@ -101,10 +102,17 @@ namespace Khazan_DataEditor.src
 
             foreach (var property in properties)
             {
+                if (property.PropertyType == typeof(PropertyData))
+                {
+                    continue;
+                }
+
                 DataPropertyItem dataPropertyItem = new DataPropertyItem();
                 dataPropertyItem._PropertyName = property.Name;
                 dataPropertyItem._PropertyDesc = "";
                 dataPropertyItem._PropertyInfo = property;
+                dataPropertyItem._PropertyDataInfo =
+                    (PropertyData)_Data.GetType().GetProperty(property.Name + "_Property")?.GetValue(_Data);
                 dataPropertyItem._BelongData = _Data;
                 dataPropertyItem._DataItem = this;
                 _DataPropertyItems.Add(dataPropertyItem);

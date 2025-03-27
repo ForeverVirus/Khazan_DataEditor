@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Khazan_DataEditor.DataControllers;
+using UAssetAPI.PropertyTypes.Objects;
 
 namespace Khazan_DataEditor.src
 {
@@ -64,6 +65,8 @@ namespace Khazan_DataEditor.src
         }
 
         private PropertyInfo _propertyInfo;
+
+        public PropertyData _PropertyDataInfo;
 
         public object _BelongData;
 

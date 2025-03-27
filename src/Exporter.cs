@@ -13,6 +13,9 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using Khazan_DataEditor.DataControllers;
 using KhazanData;
+using UAssetAPI;
+using UAssetAPI.ExportTypes;
+using UAssetAPI.UnrealTypes;
 
 namespace Khazan_DataEditor.src
 {
@@ -63,21 +66,36 @@ namespace Khazan_DataEditor.src
             // 创建类的实例
             return Activator.CreateInstance(type);
         }
+
+        // static KhazanTableBase GetTableDataFromUAsset(UAsset uasset, string className)
+        // {
+        //     var dataExp = uasset.Exports[0] as DataTableExport;
+        //     var ourTbl = dataExp?.Table;
+        //     
+        //     var instance = CreateInstance(className);
+        //     if (instance == null)
+        //         return null;
+        //     
+        //     MethodInfo? method = instance.GetType().GetMethod("Initialize");
+        // }
         
-        public static KhazanTableBase GetDataByFile(string fileName, string filePath)
+        public static (KhazanTableBase, UAsset) GetDataByFile(string fileName, string filePath)
         {
-            JArray? array = JsonConvert.DeserializeObject<JArray>(File.ReadAllText(filePath));
+            UAsset asset = new UAsset(filePath, EngineVersion.VER_UE4_27);
             var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
-            var className = fileNameWithoutExtension.Split('_')[0] + "DataTbl";
+            var className = fileNameWithoutExtension.Split('_')[0] + "datatbl";
             var instance = CreateInstance(className);
-
+            //
             if (instance == null)
-                return null;
+                return (null, asset);
             MethodInfo? method = instance.GetType().GetMethod("Initialize");
-
-            method?.Invoke(instance, [array]);
-
-            return instance as KhazanTableBase;
+            //
+            method?.Invoke(instance, [asset]);
+            //
+            
+            // asset.Write(Path.GetDirectoryName(filePath) + "\\" + Path.GetFileNameWithoutExtension(fileName) + "_2.uasset");
+            
+            return ((instance as KhazanTableBase), asset);
             
             // var protobufDBTypes = s_protobufDB.GetTypes();
             // var runtimeTypes = s_runtime.GetTypes();
@@ -121,7 +139,7 @@ namespace Khazan_DataEditor.src
             //         Console.WriteLine("Data Failed File : " + filePath);
             //     }
             // }
-            return null;
+            // return null;
         }
 
         public static void Director(string dir, List<string> list, List<string> filePathList)
@@ -133,8 +151,8 @@ namespace Khazan_DataEditor.src
             DirectoryInfo[] directs = d.GetDirectories();//文件夹
             foreach (FileInfo f in files)
             {
-                if (f.Extension == ".json" && f.Name.Contains("_ue")
-                    && !f.FullName.Contains("_Header") && !f.FullName.Contains("_Common") && !f.FullName.Contains("_Collection"))
+                if (f.Extension == ".uasset"
+                    && f.FullName.Contains("DataTable\\Script"))
                 {
                     list.Add(f.Name);//添加文件名到列表中  
                     var indexOf = f.FullName.LastIndexOf("\\");
@@ -236,9 +254,26 @@ namespace Khazan_DataEditor.src
                 dataFile.LoadData();
             }
 
-            var jsonContent = JsonConvert.SerializeObject(dataFile._FileData.GetTable());
+            // var fileName = Path.GetFileNameWithoutExtension(dataFile._FileName);
+            // var realFileName = fileName.Split('_')[0] + ".uasset";
+            
+            // dataFile._UAsset.
+            // var newFile = Path.GetDirectoryName(path) + "\\" + Path.GetFileNameWithoutExtension(dataFile._FileName) +
+            //               "_2.uasset";
+            dataFile._UAsset.Write(path);
+            
+            // UAsset asset = new UAsset(newFile, EngineVersion.VER_UE4_27);
+            //
+            // asset.Write(path);
+
+            // if (File.Exists(newFile))
+            {
+                // File.Delete(path);
+                // File.Move(newFile, path);
+            }
+            // var jsonContent = JsonConvert.SerializeObject(dataFile._FileData.GetTable());
             // jsonContent.Replace("\"Table\":", "");
-            File.WriteAllText(path, jsonContent);
+            // File.WriteAllText(path, jsonContent);
 
             // dataFile._FileData.WriteTo(output);
             // }

@@ -1,25 +1,36 @@
-using Newtonsoft.Json.Linq;
+using UAssetAPI;
+using UAssetAPI.ExportTypes;
+using UAssetAPI.PropertyTypes.Objects;
 
 namespace KhazanData
 {
-public class ArtBookData : KhazanDataBase
+public class artbookdata : KhazanDataBase
 {
     public int TIDX { get; set; }
+public PropertyData TIDX_Property { get; set; }
     public int PageNo { get; set; }
+public PropertyData PageNo_Property { get; set; }
     public string Description { get; set; }
+public PropertyData Description_Property { get; set; }
     public string ImagePath { get; set; }
+public PropertyData ImagePath_Property { get; set; }
 }
 
-public class ArtBookDataTbl : KhazanTableBase
+public class artbookdatatbl : KhazanTableBase
 {
-    public List<ArtBookData> Table { get; set; }
-    public void Initialize(JArray array)
+    public List<artbookdata> Table
     {
-        Table = new List<ArtBookData>();
-        var dataArray = array.ToObject<ArtBookData[]>();
-        Table.AddRange(dataArray);
+        get { return _table;}
+        set { _table = value; }
     }
-
+    private List<artbookdata> _table;
+    public override void Initialize(UAsset uasset)
+    {
+        _table = new List<artbookdata>();
+        var dataExp = uasset.Exports[0] as DataTableExport;
+        var table = dataExp?.Table;
+        ProcessUAssetTable(table.Data, ref _table);
+    }
     public override List<KhazanDataBase> GetTable()
     {
         return new List<KhazanDataBase>(Table);

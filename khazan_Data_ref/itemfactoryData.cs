@@ -1,25 +1,36 @@
-using Newtonsoft.Json.Linq;
+using UAssetAPI;
+using UAssetAPI.ExportTypes;
+using UAssetAPI.PropertyTypes.Objects;
 
 namespace KhazanData
 {
-public class itemfactoryData : KhazanDataBase
+public class itemfactorydata : KhazanDataBase
 {
     public int TIDX { get; set; }
+public PropertyData TIDX_Property { get; set; }
     public string Name { get; set; }
+public PropertyData Name_Property { get; set; }
     public int[] GradeRatio { get; set; }
+public PropertyData GradeRatio_Property { get; set; }
     public int[] ItemID { get; set; }
+public PropertyData ItemID_Property { get; set; }
 }
 
-public class itemfactoryDataTbl : KhazanTableBase
+public class itemfactorydatatbl : KhazanTableBase
 {
-    public List<itemfactoryData> Table { get; set; }
-    public void Initialize(JArray array)
+    public List<itemfactorydata> Table
     {
-        Table = new List<itemfactoryData>();
-        var dataArray = array.ToObject<itemfactoryData[]>();
-        Table.AddRange(dataArray);
+        get { return _table;}
+        set { _table = value; }
     }
-
+    private List<itemfactorydata> _table;
+    public override void Initialize(UAsset uasset)
+    {
+        _table = new List<itemfactorydata>();
+        var dataExp = uasset.Exports[0] as DataTableExport;
+        var table = dataExp?.Table;
+        ProcessUAssetTable(table.Data, ref _table);
+    }
     public override List<KhazanDataBase> GetTable()
     {
         return new List<KhazanDataBase>(Table);

@@ -1,25 +1,36 @@
-using Newtonsoft.Json.Linq;
+using UAssetAPI;
+using UAssetAPI.ExportTypes;
+using UAssetAPI.PropertyTypes.Objects;
 
 namespace KhazanData
 {
-public class ShopSellItemPriceWeightData : KhazanDataBase
+public class shopsellitempriceweightdata : KhazanDataBase
 {
     public int TIDX { get; set; }
+public PropertyData TIDX_Property { get; set; }
     public long MinLevel { get; set; }
+public PropertyData MinLevel_Property { get; set; }
     public long MaxLevel { get; set; }
+public PropertyData MaxLevel_Property { get; set; }
     public float Weight { get; set; }
+public PropertyData Weight_Property { get; set; }
 }
 
-public class ShopSellItemPriceWeightDataTbl : KhazanTableBase
+public class shopsellitempriceweightdatatbl : KhazanTableBase
 {
-    public List<ShopSellItemPriceWeightData> Table { get; set; }
-    public void Initialize(JArray array)
+    public List<shopsellitempriceweightdata> Table
     {
-        Table = new List<ShopSellItemPriceWeightData>();
-        var dataArray = array.ToObject<ShopSellItemPriceWeightData[]>();
-        Table.AddRange(dataArray);
+        get { return _table;}
+        set { _table = value; }
     }
-
+    private List<shopsellitempriceweightdata> _table;
+    public override void Initialize(UAsset uasset)
+    {
+        _table = new List<shopsellitempriceweightdata>();
+        var dataExp = uasset.Exports[0] as DataTableExport;
+        var table = dataExp?.Table;
+        ProcessUAssetTable(table.Data, ref _table);
+    }
     public override List<KhazanDataBase> GetTable()
     {
         return new List<KhazanDataBase>(Table);

@@ -114,6 +114,7 @@ public enum EItemGrade
 
 public enum EGrBaseStatus
 {
+    None = 0,
     StaminaPointMax = 1,
     STRecovery = 2,
     SkillPoint = 3,

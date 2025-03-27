@@ -1,26 +1,38 @@
-using Newtonsoft.Json.Linq;
+using UAssetAPI;
+using UAssetAPI.ExportTypes;
+using UAssetAPI.PropertyTypes.Objects;
 
 namespace KhazanData
 {
-public class MetaStatAgilityTableData : KhazanDataBase
+public class metastatagilitytabledata : KhazanDataBase
 {
     public int TIDX { get; set; }
+public PropertyData TIDX_Property { get; set; }
     public string StatName { get; set; }
+public PropertyData StatName_Property { get; set; }
     public EStatusGrade Stat { get; set; }
+public PropertyData Stat_Property { get; set; }
     public EStatClass StatClass { get; set; }
+public PropertyData StatClass_Property { get; set; }
     public float StatWeight { get; set; }
+public PropertyData StatWeight_Property { get; set; }
 }
 
-public class MetaStatAgilityTableDataTbl : KhazanTableBase
+public class metastatagilitytabledatatbl : KhazanTableBase
 {
-    public List<MetaStatAgilityTableData> Table { get; set; }
-    public void Initialize(JArray array)
+    public List<metastatagilitytabledata> Table
     {
-        Table = new List<MetaStatAgilityTableData>();
-        var dataArray = array.ToObject<MetaStatAgilityTableData[]>();
-        Table.AddRange(dataArray);
+        get { return _table;}
+        set { _table = value; }
     }
-
+    private List<metastatagilitytabledata> _table;
+    public override void Initialize(UAsset uasset)
+    {
+        _table = new List<metastatagilitytabledata>();
+        var dataExp = uasset.Exports[0] as DataTableExport;
+        var table = dataExp?.Table;
+        ProcessUAssetTable(table.Data, ref _table);
+    }
     public override List<KhazanDataBase> GetTable()
     {
         return new List<KhazanDataBase>(Table);

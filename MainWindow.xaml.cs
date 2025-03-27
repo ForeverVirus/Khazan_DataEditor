@@ -32,6 +32,8 @@ using KhazanData;
 using Newtonsoft.Json;
 using System.Globalization;
 using System.Resources;
+using UAssetAPI.PropertyTypes.Objects;
+using UAssetAPI.UnrealTypes;
 using Application = System.Windows.Application;
 using RadioButton = System.Windows.Controls.RadioButton;
 
@@ -1105,7 +1107,7 @@ namespace Khazan_DataEditor
                 //     pakPath = file._FilePath.Substring(b1Index,
                 //         file._FilePath.Length - b1Index);
 
-                var outPath = Path.Combine(dir, "BBQ/Content/Scripts/DataScript/ExportTable/DSJ/" + file._FileName);
+                var outPath = Path.Combine(dir, "BBQ\\Content\\_Common\\DataTable\\Script\\" + file._FileName);
 
                 Exporter.SaveDataFile(useDir ? dir : outPath, file);
             }
@@ -2151,6 +2153,28 @@ namespace Khazan_DataEditor
             if (item != null)
             {
                 item._PropertyInfo.SetValue(item._BelongData, value);
+                Type valueType = value.GetType();
+                if (valueType.IsEnum && item._PropertyDataInfo.RawValue is FName fname)
+                {
+                    string enumType = valueType.Name;
+                    string enumValueString = Enum.GetName(valueType, value);
+                    fname.Value = FString.FromString($"{enumType}::{enumValueString}");
+                    item._PropertyDataInfo.RawValue = fname;
+                }
+                else if (item._PropertyDataInfo.RawValue is FString)
+                {
+                    item._PropertyDataInfo.RawValue = (FString.FromString((string)value));
+                }
+                else if (item._PropertyDataInfo.RawValue is long && value is int intValue)
+                {
+                    item._PropertyDataInfo.RawValue = (long)intValue;
+                }
+                else
+                {
+                    item._PropertyDataInfo.RawValue = value;
+                    // item._PropertyDataInfo.SetObject(value);
+                }
+                
                 // if(item._DataItem != null)
                 //     item._DataItem._IsDirty = true;
                 if (_CurrentOpenFile != null)
@@ -2444,7 +2468,7 @@ namespace Khazan_DataEditor
                 _CurrentOpenFile.Tag = outPath;
 
                 _updateFiles.TryAdd(_CurrentOpenFile._FileName, _CurrentOpenFile);
-                Exporter.SaveDataFile(outPath, _CurrentOpenFile);
+                // Exporter.SaveDataFile(outPath, _CurrentOpenFile);
 
             }
             //标红
@@ -2545,6 +2569,8 @@ namespace Khazan_DataEditor
                     int rowIndex = 0;
                     foreach (var property in properties)
                     {
+                        if (property.PropertyType == typeof(PropertyData))
+                            continue;
                         System.Windows.Controls.Label label = new System.Windows.Controls.Label();
                         var key = $"{property.DeclaringType.Name}.{property.Name}";
                         if (!ComparisonTableController.Instance.GetData(key, out var labelContent) || string.IsNullOrWhiteSpace(labelContent))

@@ -1,4 +1,4 @@
-﻿namespace KhazanData;
+namespace KhazanData;
 
 public class KhazanDataBase
 {

@@ -1,26 +1,38 @@
-using Newtonsoft.Json.Linq;
+using UAssetAPI;
+using UAssetAPI.ExportTypes;
+using UAssetAPI.PropertyTypes.Objects;
 
 namespace KhazanData
 {
-public class SmartDropData : KhazanDataBase
+public class smartdropdata : KhazanDataBase
 {
     public int TIDX { get; set; }
+public PropertyData TIDX_Property { get; set; }
     public EItemType Type { get; set; }
+public PropertyData Type_Property { get; set; }
     public EItemSubType SubType { get; set; }
+public PropertyData SubType_Property { get; set; }
     public int SelectCount { get; set; }
+public PropertyData SelectCount_Property { get; set; }
     public int ResetCount { get; set; }
+public PropertyData ResetCount_Property { get; set; }
 }
 
-public class SmartDropDataTbl : KhazanTableBase
+public class smartdropdatatbl : KhazanTableBase
 {
-    public List<SmartDropData> Table { get; set; }
-    public void Initialize(JArray array)
+    public List<smartdropdata> Table
     {
-        Table = new List<SmartDropData>();
-        var dataArray = array.ToObject<SmartDropData[]>();
-        Table.AddRange(dataArray);
+        get { return _table;}
+        set { _table = value; }
     }
-
+    private List<smartdropdata> _table;
+    public override void Initialize(UAsset uasset)
+    {
+        _table = new List<smartdropdata>();
+        var dataExp = uasset.Exports[0] as DataTableExport;
+        var table = dataExp?.Table;
+        ProcessUAssetTable(table.Data, ref _table);
+    }
     public override List<KhazanDataBase> GetTable()
     {
         return new List<KhazanDataBase>(Table);

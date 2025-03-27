@@ -1,26 +1,38 @@
-using Newtonsoft.Json.Linq;
+using UAssetAPI;
+using UAssetAPI.ExportTypes;
+using UAssetAPI.PropertyTypes.Objects;
 
 namespace KhazanData
 {
-public class TombStoneListData : KhazanDataBase
+public class tombstonelistdata : KhazanDataBase
 {
     public int TIDX { get; set; }
+public PropertyData TIDX_Property { get; set; }
     public string Name { get; set; }
+public PropertyData Name_Property { get; set; }
     public string Description { get; set; }
+public PropertyData Description_Property { get; set; }
     public bool IsStartingPoint { get; set; }
+public PropertyData IsStartingPoint_Property { get; set; }
     public string ImagePath { get; set; }
+public PropertyData ImagePath_Property { get; set; }
 }
 
-public class TombStoneListDataTbl : KhazanTableBase
+public class tombstonelistdatatbl : KhazanTableBase
 {
-    public List<TombStoneListData> Table { get; set; }
-    public void Initialize(JArray array)
+    public List<tombstonelistdata> Table
     {
-        Table = new List<TombStoneListData>();
-        var dataArray = array.ToObject<TombStoneListData[]>();
-        Table.AddRange(dataArray);
+        get { return _table;}
+        set { _table = value; }
     }
-
+    private List<tombstonelistdata> _table;
+    public override void Initialize(UAsset uasset)
+    {
+        _table = new List<tombstonelistdata>();
+        var dataExp = uasset.Exports[0] as DataTableExport;
+        var table = dataExp?.Table;
+        ProcessUAssetTable(table.Data, ref _table);
+    }
     public override List<KhazanDataBase> GetTable()
     {
         return new List<KhazanDataBase>(Table);

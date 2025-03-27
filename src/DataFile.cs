@@ -2,6 +2,7 @@
 using System.Security.Cryptography;
 using System.Windows.Controls;
 using KhazanData;
+using UAssetAPI;
 
 namespace Khazan_DataEditor.src
 {
@@ -10,6 +11,7 @@ namespace Khazan_DataEditor.src
         public string _FileName;
         public string _FilePath;
         public KhazanTableBase _FileData;
+        public UAsset _UAsset;
         public string _Desc
         {
             get
@@ -60,10 +62,15 @@ namespace Khazan_DataEditor.src
             }
             if (!CanOpen)
                 return;
-            var data = Exporter.GetDataByFile(_FileName, filePath);
+            var (data, uassset) = Exporter.GetDataByFile(_FileName, filePath);
             if (data != null)
             {
+                var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(_FileName);
+                var uassetFileName = fileNameWithoutExtension.Split('_')[0];
+                
+                
                 _FileData = data;
+                _UAsset = uassset;
                 CanOpen = false;
                 _FileDataItemList = new List<DataItem>();
                 _IDList = new List<int>();

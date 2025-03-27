@@ -42,6 +42,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>ref\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="UAssetAPI">
+      <HintPath>ref\UAssetAPI.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
