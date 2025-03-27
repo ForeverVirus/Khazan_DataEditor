@@ -20,6 +20,8 @@ public PropertyData MonsterGradeType_Property { get; set; }
 public PropertyData MonsterRace_Property { get; set; }
     public EMonsterSpecies MonsterSpecies { get; set; }
 public PropertyData MonsterSpecies_Property { get; set; }
+    public EAssemblyStep AssemblyStep { get; set; }
+public PropertyData AssemblyStep_Property { get; set; }
     public ENormalAttackType NormalAttackType { get; set; }
 public PropertyData NormalAttackType_Property { get; set; }
     public string Blueprint { get; set; }
@@ -36,6 +38,8 @@ public PropertyData OverHeadGaugeType_Property { get; set; }
 public PropertyData DropRewardID_Property { get; set; }
     public ERewardGrade MonsterRewardGrade { get; set; }
 public PropertyData MonsterRewardGrade_Property { get; set; }
+    public EMissionType MonsterMissionType { get; set; }
+public PropertyData MonsterMissionType_Property { get; set; }
 }
 
 public class monsterlistdatatbl : KhazanTableBase

@@ -4,6 +4,16 @@ using UAssetAPI.PropertyTypes.Objects;
 
 namespace KhazanData
 {
+public class StaticLobIteminfo : KhazanDataBase
+{
+    public int TIDX { get; set; }
+public PropertyData TIDX_Property { get; set; }
+    public int ContentsLevel_Playround { get; set; }
+public PropertyData ContentsLevel_Playround_Property { get; set; }
+    public EItemGrade ItemGrade_Playround { get; set; }
+public PropertyData ItemGrade_Playround_Property { get; set; }
+}
+
 public class balanceobjectleveldata : KhazanDataBase
 {
     public int TIDX { get; set; }
@@ -12,8 +22,8 @@ public PropertyData TIDX_Property { get; set; }
 public PropertyData MissionTidx_Property { get; set; }
     public int UniqueIndex { get; set; }
 public PropertyData UniqueIndex_Property { get; set; }
-    public int[] ContentsLevel_Playround { get; set; }
-public PropertyData ContentsLevel_Playround_Property { get; set; }
+    public StaticLobIteminfo[] StaticLobIteminfo { get; set; }
+public PropertyData StaticLobIteminfo_Property { get; set; }
     public string Description { get; set; }
 public PropertyData Description_Property { get; set; }
 }

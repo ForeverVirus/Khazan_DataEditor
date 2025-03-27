@@ -98,6 +98,8 @@ public PropertyData DetailText2_Property { get; set; }
 public PropertyData DetailText3_Property { get; set; }
     public string SortType { get; set; }
 public PropertyData SortType_Property { get; set; }
+    public string UseSoundPath { get; set; }
+public PropertyData UseSoundPath_Property { get; set; }
 }
 
 public class consumedatatbl : KhazanTableBase

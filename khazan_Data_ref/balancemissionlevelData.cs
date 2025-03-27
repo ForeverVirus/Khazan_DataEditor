@@ -22,6 +22,8 @@ public PropertyData RewardLevelMin_Property { get; set; }
 public PropertyData RewardLevelMax_Property { get; set; }
     public int GoodsRewardLevel { get; set; }
 public PropertyData GoodsRewardLevel_Property { get; set; }
+    public int FirstKill_GoodsRewardLevel { get; set; }
+public PropertyData FirstKill_GoodsRewardLevel_Property { get; set; }
     public int CombatLevel { get; set; }
 public PropertyData CombatLevel_Property { get; set; }
     public int DropRewardTIDX { get; set; }

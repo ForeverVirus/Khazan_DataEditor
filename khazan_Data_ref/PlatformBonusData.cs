@@ -12,6 +12,8 @@ public PropertyData TIDX_Property { get; set; }
 public PropertyData RewardType_Property { get; set; }
     public long RewardTIDX { get; set; }
 public PropertyData RewardTIDX_Property { get; set; }
+    public int RewardLevel { get; set; }
+public PropertyData RewardLevel_Property { get; set; }
     public int RewardCount { get; set; }
 public PropertyData RewardCount_Property { get; set; }
 }
@@ -22,6 +24,8 @@ public class platformbonusdata : KhazanDataBase
 public PropertyData TIDX_Property { get; set; }
     public string Tag { get; set; }
 public PropertyData Tag_Property { get; set; }
+    public EPlatformBonusCondition Condition { get; set; }
+public PropertyData Condition_Property { get; set; }
     public string PBonusName { get; set; }
 public PropertyData PBonusName_Property { get; set; }
     public PlatformBonusRewardItem[] PlatformBonusRewardItem { get; set; }

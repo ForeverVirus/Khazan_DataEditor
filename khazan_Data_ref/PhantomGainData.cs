@@ -46,6 +46,12 @@ public PropertyData NeedItemCountLevel1_Property { get; set; }
 public PropertyData EffectSkillLevel1_Property { get; set; }
     public string EffectSkilDescriptionlLevel1 { get; set; }
 public PropertyData EffectSkilDescriptionlLevel1_Property { get; set; }
+    public string DescriptionlLevel1ReplaceText0 { get; set; }
+public PropertyData DescriptionlLevel1ReplaceText0_Property { get; set; }
+    public string DescriptionlLevel1ReplaceText1 { get; set; }
+public PropertyData DescriptionlLevel1ReplaceText1_Property { get; set; }
+    public string DescriptionlLevel1ReplaceText2 { get; set; }
+public PropertyData DescriptionlLevel1ReplaceText2_Property { get; set; }
     public int SequenceDialogueTIDXLevel1 { get; set; }
 public PropertyData SequenceDialogueTIDXLevel1_Property { get; set; }
     public int NeedItemCountLevel2 { get; set; }
@@ -54,6 +60,12 @@ public PropertyData NeedItemCountLevel2_Property { get; set; }
 public PropertyData EffectSkillLevel2_Property { get; set; }
     public string EffectSkilDescriptionlLevel2 { get; set; }
 public PropertyData EffectSkilDescriptionlLevel2_Property { get; set; }
+    public string DescriptionlLevel2ReplaceText0 { get; set; }
+public PropertyData DescriptionlLevel2ReplaceText0_Property { get; set; }
+    public string DescriptionlLevel2ReplaceText1 { get; set; }
+public PropertyData DescriptionlLevel2ReplaceText1_Property { get; set; }
+    public string DescriptionlLevel2ReplaceText2 { get; set; }
+public PropertyData DescriptionlLevel2ReplaceText2_Property { get; set; }
     public int SequenceDialogueTIDXLevel2 { get; set; }
 public PropertyData SequenceDialogueTIDXLevel2_Property { get; set; }
 }

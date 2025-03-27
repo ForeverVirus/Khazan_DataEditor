@@ -114,7 +114,7 @@ public enum EItemGrade
 
 public enum EGrBaseStatus
 {
-    None = 0,
+    None,
     StaminaPointMax = 1,
     STRecovery = 2,
     SkillPoint = 3,
@@ -492,6 +492,7 @@ public enum EStatPoint
     Exp = 2,
     Gold = 3,
     PlayerMemory = 4,
+    AmountHPPotion = 5,
 }
 
 public enum EMissionStop
@@ -882,26 +883,36 @@ public enum EMonsterSpecies
     None = 0,
     Picaroon = 1,
     Empire = 2,
-    Banto = 3,
-    DarkElf = 4,
-    Imposter = 5,
-    Demon = 6,
-    DemonSlave = 7,
-    DemonFollower = 8,
-    Dragon = 9,
-    Dragonian = 10,
-    Spider = 11,
-    Apes = 12,
-    Feline = 13,
-    Reptile = 14,
-    Skeleton = 15,
-    Zombie = 16,
-    Wraith = 17,
-    Reaper = 18,
-    Golem = 19,
-    AbominationG = 20,
-    AbominationC = 21,
-    AbominationF = 22,
+    Imposter = 3,
+    Demon = 4,
+    DemonSlave = 5,
+    DemonFollower = 6,
+    Dragon = 7,
+    Dragonian = 8,
+    Spider = 9,
+    Apes = 10,
+    Skeleton = 11,
+    Zombie = 12,
+    Wraith = 13,
+    Golem = 14,
+    AbominationG = 15,
+    Beast = 16,
+    Statue = 17,
+    Plant = 18,
+    Blood = 19,
+    Armor = 20,
+    MartialArts = 21,
+    Zealot = 22,
+    Ghost = 23,
+    Descendant = 24,
+}
+
+public enum EAssemblyStep
+{
+    None = 0,
+    Q1 = 1,
+    Q2 = 2,
+    Q3 = 3,
 }
 
 public enum ENormalAttackType
@@ -1014,12 +1025,20 @@ public enum EPhantomGain
     Count = 3,
 }
 
+public enum EPlatformBonusCondition
+{
+    None = 0,
+    Preorder = 1,
+    Deluxe = 2,
+    OnlyData = 3,
+    Count = 4,
+}
+
 public enum EPlatformBonus
 {
     None = 0,
-    Equipment = 1,
-    Consume = 2,
-    Gold = 3,
+    Reward = 1,
+    Gold = 2,
 }
 
 public enum EItemOptionValue
@@ -1060,7 +1079,8 @@ public enum ESoulStoneBonus
     AmountHPPotion = 2,
     AmountGold = 3,
     MaximumBattleResource1Number = 4,
-    Count = 5,
+    HPPosionLifeRecoveryRate = 5,
+    Count = 6,
 }
 
 public enum EGameMessageType
@@ -1130,6 +1150,7 @@ public enum EWeaponSkillStat
     HealthPointSet = 29,
     HealthPointAddValue = 30,
     JustDodgeTimeAdd = 31,
+    StaminaDamageReductionRate = 32,
 }
 
 public enum EWeaponSkillCondition

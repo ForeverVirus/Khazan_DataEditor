@@ -48,6 +48,12 @@ public PropertyData ItemAddInfoTIDX_Property { get; set; }
 public PropertyData Name_Property { get; set; }
     public string Description { get; set; }
 public PropertyData Description_Property { get; set; }
+    public string ReplaceText0 { get; set; }
+public PropertyData ReplaceText0_Property { get; set; }
+    public string ReplaceText1 { get; set; }
+public PropertyData ReplaceText1_Property { get; set; }
+    public string ReplaceText2 { get; set; }
+public PropertyData ReplaceText2_Property { get; set; }
 }
 
 public class itemoptiontextdatatbl : KhazanTableBase
