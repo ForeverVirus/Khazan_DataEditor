@@ -183,7 +183,7 @@
                          SizeChanged="DataItemList_SizeChanged"
                          d:ItemsSource="{d:SampleData ItemCount=5}" />
                 </Border>
-                <Button x:Name="AddNewDataItem" Background="LightGray" HorizontalAlignment="Center" Content="新增一项" Width="Auto" Height="30" Click="AddNewDataItem_Click" />
+                <!-- <Button x:Name="AddNewDataItem" Background="LightGray" HorizontalAlignment="Center" Content="新增一项" Width="Auto" Height="30" Click="AddNewDataItem_Click" /> -->
             </StackPanel>
 
             <!-- 第三个区块 -->

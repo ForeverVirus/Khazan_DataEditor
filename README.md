@@ -1,4 +1,4 @@
-# Khazan_DataEditor
+# 卡赞配表编辑器
 
 ## 功能描述
 
@@ -46,3 +46,51 @@ PAK需要加_P 才能生效
 3. dirty 的data文件标记（已完成）
 4. data pak的解包及merge （解包完成）
 5. 新增数据（已完成）
+
+
+# Khazan_DataEditor
+
+## Feature Description
+
+### Unpack .uasset Files from PAK
+Visualize all unpacked .uasset files from the `BBQ\Content\_Common\DataTable\Script` directory within PAK files.
+
+### Edit .uasset Files
+Visually edit .uasset configuration files and save them as new files.
+
+### Generate PAK
+Supports drag-and-drop folder packaging to generate game-compatible PAK mod files.  
+If the modified data file path is `\BBQ\Content\_Common\DataTable\Script\xxx.uasset`, you must prepend your mod name folder to this path when generating the PAK. For example, if your mod is named `MyMod`, the full path should be:  
+`MyMod\BBQ\Content\_Common\DataTable\Script\xxx.uasset`  
+Drag the `MyMod` folder into the PAK generation window to complete packaging.  
+**Note**: PAK files must have the `_P` suffix to take effect.  
+Example: `MyMod_P.pak`
+
+### Notes Import/Export
+Add custom notes to .uasset data to mark analyzed configuration tables.  
+Supports importing pre-configured note files to facilitate collaboration among mod authors for full-scale table analysis.
+
+## Usage
+
+1. Open the software and navigate to **File -> Open Data Directory**. Select a folder containing .uasset files (typically the `BBQ\Content\_Common\DataTable\Script` folder unpacked via FModel).  
+2. The interface is divided into three sections from left to right:  
+   - List of .uasset files  
+   - Data entries within a selected .uasset file  
+   - Field details of a selected data entry  
+3. Some fields in .uasset files contain nested data. These can be edited by opening a new window.  
+4. All features mentioned above are accessible under the **File** menu.
+
+## Notes
+
+1. This tool is **only** an editor for .uasset configuration files and does not support other .uasset files unpacked by FModel.  
+2. Requires **.NET 8.0 Runtime**. Install it before use.  
+3. Feel free to fork and modify this tool. Please credit the original author if redistributing.  
+4. For questions or collaboration, contact the author: **[QinShou-YunXuan](https://space.bilibili.com/8729996)**.  
+
+## Future Updates
+
+1. Support multi-file editing and saving (Completed)  
+2. Undo/Redo functionality  
+3. Dirty file marking (Completed)  
+4. PAK unpacking and merging (Unpacking completed)  
+5. Add new data entries (Completed)  

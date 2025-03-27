@@ -1357,7 +1357,7 @@ namespace Khazan_DataEditor
 
         private void DataItemList_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            AddNewDataItem.Width = DataItemList.ActualWidth;
+            // AddNewDataItem.Width = DataItemList.ActualWidth;
         }
 
         private void OpenFile(DataFile file)
@@ -1404,8 +1404,8 @@ namespace Khazan_DataEditor
                 listItem.Content = item._ID + "  " + item._Desc;
                 if (!Exporter.IsSameAsMd5(item, _MD5Config))
                 {
-                    listItem.Foreground = new SolidColorBrush(Colors.Red);
-                    item._IsModified = true;
+                    // listItem.Foreground = new SolidColorBrush(Colors.Red);
+                    // item._IsModified = true;
                 }
 
                 listItem.DataContext = item;
@@ -1420,17 +1420,17 @@ namespace Khazan_DataEditor
                 menuItem.Click += OpenDescriptionWindow;
                 listItem.ContextMenu.Items.Add(menuItem);
 
-                MenuItem cloneMenuItem = new MenuItem();
-                cloneMenuItem.Header = s_resourceManager.GetString("Clone");
-                cloneMenuItem.DataContext = item;
-                cloneMenuItem.Click += CloneMenuItem_Click;
-                listItem.ContextMenu.Items.Add(cloneMenuItem);
+                // MenuItem cloneMenuItem = new MenuItem();
+                // cloneMenuItem.Header = s_resourceManager.GetString("Clone");
+                // cloneMenuItem.DataContext = item;
+                // cloneMenuItem.Click += CloneMenuItem_Click;
+                // listItem.ContextMenu.Items.Add(cloneMenuItem);
 
-                MenuItem delMenuItem = new MenuItem();
-                delMenuItem.Header = s_resourceManager.GetString("Delete");
-                delMenuItem.DataContext = item;
-                delMenuItem.Click += DelMenuItem_Click;
-                listItem.ContextMenu.Items.Add(delMenuItem);
+                // MenuItem delMenuItem = new MenuItem();
+                // delMenuItem.Header = s_resourceManager.GetString("Delete");
+                // delMenuItem.DataContext = item;
+                // delMenuItem.Click += DelMenuItem_Click;
+                // listItem.ContextMenu.Items.Add(delMenuItem);
 
                 // MenuItem delOtherMenuItem = new MenuItem();
                 // delOtherMenuItem.Header = "除选择外全部删除";
@@ -2253,12 +2253,12 @@ namespace Khazan_DataEditor
                 //{
 
                 //};
-                MenuItem delMenu = new MenuItem();
-                delMenu.Header = s_resourceManager.GetString("Delete");
-                delMenu.DataContext = new Tuple<int, IList, Grid>(rowIndex, data, grid);
-                //delMenu.Click += DelMenu_Click;
-                delMenu.Click += ChangeEvent;
-                groupLabel.ContextMenu.Items.Add(delMenu);
+                // MenuItem delMenu = new MenuItem();
+                // delMenu.Header = s_resourceManager.GetString("Delete");
+                // delMenu.DataContext = new Tuple<int, IList, Grid>(rowIndex, data, grid);
+                // //delMenu.Click += DelMenu_Click;
+                // delMenu.Click += ChangeEvent;
+                // groupLabel.ContextMenu.Items.Add(delMenu);
 
                 grid.Children.Add(groupLabel);
 
@@ -3393,7 +3393,7 @@ namespace Khazan_DataEditor
             this.FileSearch.Text = s_resourceManager.GetString("FileSearch");
             this.ItemSearch.Text = s_resourceManager.GetString("ItemSearch");
             this.DataContent.Text = s_resourceManager.GetString("DataContent");
-            this.AddNewDataItem.Content = s_resourceManager.GetString("AddNewDataItem");
+            // this.AddNewDataItem.Content = s_resourceManager.GetString("AddNewDataItem");
             
         }
     }
